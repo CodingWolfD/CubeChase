@@ -9,7 +9,7 @@ public class Enemy_Movement : MonoBehaviour {
     private Player_Manager plM; // REFERENCE TO THE PLAYER MANAGER
     private GameObject target; // USED TO SET THE TARGET FOR THR ENEMY
 
-	void Start ()
+	private void Start ()
     {
         gm = GameObject.Find("Game_Manager").GetComponent<Game_Manager>(); // USED TIO FIND THE GAME MANAGER AND ACCESS THE GAMEMANAGER SCRIPT
         plM = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Manager>(); // USED TIO FIND THE PLAYER GAMEOBJECT AND ACCESS THE PLAYERMANAGER SCRIPT
@@ -17,7 +17,7 @@ public class Enemy_Movement : MonoBehaviour {
         speed = 3; // SETS THE SPEED OF THE ENEMY AI TO 3
 	}
 	
-	void Update ()
+	private void Update ()
     {
         moveEnemy(); // CALLS THE MOVENEMEY METHOD EVERY TICK
 	}
@@ -37,6 +37,7 @@ public class Enemy_Movement : MonoBehaviour {
         if(col.gameObject.name == "Player") // IF THE ENEMY COLLIDES WITH A GAMEOBJECT WITH THE NAME PLAYER
         {
             plM.takeDamage(10); // CALLS THE TAKEDAMAGE METHOD IN THE PLAYER MANAGER AND SETS THE DAMAGE VAL TO 10
+            gm.updateHud(); // CALLS THE GAMEMANAGER'S UPDATEHUD METHOD
             gm.resetGame(); // CALLS THE GAMEMANAGER'S RESETGAME METHOD
         }
     }

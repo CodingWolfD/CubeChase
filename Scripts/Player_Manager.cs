@@ -30,10 +30,16 @@ public class Player_Manager : MonoBehaviour {
 
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "Coin") // IF THE PLAYER COLLIDES WITH ANY GAMEOBJECT WITH THE TAG "COIN"
+        if(col.gameObject.tag.Equals("Coin")) // IF THE PLAYER COLLIDES WITH ANY GAMEOBJECT WITH THE TAG "COIN"
         {
             gm.addCoin(); // CALLS THE GAMEMANAGERS ADDCOIN METHOD
             Destroy(col.gameObject); // DESTROYS THE COIN GAMEOBJECT THE PLAYER COLLIDED WITH
+        }
+        else if (col.gameObject.tag.Equals("Death_Barrier")) // IF THE PLAYER COLLIDES WITH ANY GAMEOBJECT WITH THE TAG "COIN"
+        {
+            gm.resetGame(); // CALLS THE GAMEMANAGERS RESETGAME METHOD
+            takeDamage(10); // CALLS THE TAKEDAMAGE METHOD TO -10 FROM THE PLAYERS CURRENT HEALTH
+            gm.updateHud(); // CALLS THE GAMEMANAGERS UPDATEHUD METHOD
         }
     }
 

@@ -39,11 +39,6 @@ public class Game_Manager : MonoBehaviour {
         startGame(); // CALLS THE START GAME METHOD
     }
 
-    private void Update()
-    {
-        updateHud(); // CALLS THE UPDATEHUD METHOD EVERY TICK
-    }
-
     public void resetGame()
     {
         enemy.transform.position = respawnPointE; // SETS THE RESPAWN POINT OF THE ENEMY TO THE ENEMIES STORED POSITION WHEN THE GAME IS RESET
@@ -66,6 +61,7 @@ public class Game_Manager : MonoBehaviour {
         }
 
         plM.setHealth(50); // SETS THE PLAYERS HEALTH TO 50
+        updateHud(); // CALLS THE UPDATEHUD METHOD
         coins = 0; // RESETS THE COINS COUNTER
     }
 
